@@ -1,6 +1,8 @@
 package com.example.celebrities
 
 import android.content.Context
+import android.content.Intent
+import android.support.v4.content.ContextCompat.startActivity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -35,6 +37,16 @@ class celebrityListAdapter:BaseAdapter {
         celebrityView.actor_image1.setImageResource(celebrity?.image ?:R.drawable.placeholder)
         celebrityView.lbl_ActorName.setText(celebrity.name)
         celebrityView.lbl_ActorDes.setText(celebrity.des)
+
+        celebrityView.setOnClickListener {
+            val intent = Intent(context,BioActivity::class.java)
+            intent.putExtra(BioActivity.ACTOR_NAME,celebrity.name)
+            intent.putExtra(BioActivity.ACTOR_DES,celebrity.des)
+            intent.putExtra(BioActivity.ACTOR_IMAGE,celebrity.image)
+
+            startActivity(context!!,intent,null)
+        }
+
 
         return celebrityView
     }
