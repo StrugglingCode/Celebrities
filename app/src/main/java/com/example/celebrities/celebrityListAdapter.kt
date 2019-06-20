@@ -8,19 +8,14 @@ import android.widget.BaseAdapter
 import kotlinx.android.synthetic.main.celebrity_row.view.*
 
 class celebrityListAdapter:BaseAdapter {
+    private var celebrityDatabase:celebrity_database? = null
     private var context:Context? = null
+
     constructor(context:Context)
     {
           celebrityDatabase = celebrity_database()
-    }
-    private var celebrityDatabase:celebrity_database? = null
-    constructor()
-    {
-        celebrityDatabase = celebrity_database()
         this.context = context
     }
-
-
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
         val celebrity:celebrity = celebrityDatabase?.celebrityList?.get(position)
             ?: celebrity("No Actor","No Description",R.drawable.placeholder,false)
