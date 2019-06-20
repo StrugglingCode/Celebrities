@@ -23,8 +23,15 @@ class celebrityListAdapter:BaseAdapter {
         var celebrityView:View
         var layoutInflator:LayoutInflater = context?.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
 
-        celebrityView = layoutInflator.inflate(R.layout.celebrity_row,null)
+        if(celebrity.isAlive == true)
+        {
+            celebrityView = layoutInflator.inflate(R.layout.alive_celebrity_row,null)
 
+        }
+        else {
+
+            celebrityView = layoutInflator.inflate(R.layout.celebrity_row, null)
+        }
         celebrityView.actor_image1.setImageResource(celebrity?.image ?:R.drawable.placeholder)
         celebrityView.lbl_ActorName.setText(celebrity.name)
         celebrityView.lbl_ActorDes.setText(celebrity.des)
